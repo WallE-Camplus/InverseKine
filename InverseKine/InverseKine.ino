@@ -78,7 +78,6 @@ void loop() {
   x = Serial.parseInt(); 
   y = Serial.parseInt();
   z = Serial.parseInt();
-  while(Serial.available() > 0) Serial.read(); // unreliable way to remove trailing newlines
 
   // moves the arm to the given coordinates in the plane
   moveArm(x,y,z); 
