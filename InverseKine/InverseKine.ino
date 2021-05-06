@@ -27,7 +27,7 @@ void inverseKine(int x, int y, int z) {
   // storing our target in double variable, to ease computation
   dx = x;
   dy = y;
-  dz = 16-z; // have no idea why this is needed
+  dz = z;
 
   // magic but maybe a little bit broken math stuff
   c1 = dx / sqrt(dx*dx + dy*dy);
@@ -35,12 +35,12 @@ void inverseKine(int x, int y, int z) {
   q1 = atan2(dy,dx);
 
   c3 = (dx*dx+dy*dy+(dz-d1)*(dz-d1)-l2*l2-l3*l3)/(2.0*l2*l3);
-  s3 = sqrt(1.0-c3*c3);
-  q3 = atan2(s3,c3);
+  s3 = -sqrt(1.0-c3*c3);
+  q3 = -atan2(s3,c3);
 
   s2 = ((l2+l3*c3)*(dz-d1)-l3*s3*(c1*dx+s1*dy))/((l2+l3*c3)*(l2+l3*c3)+(l3*s3)*(l3*s3));
   c2 = sqrt(1.0-s2*s2);
-  q2 = -atan2(s2,c2);
+  q2 = atan2(s2,c2);
 }
 
 void writeArm(int anghip, int angshoulder, int angelbow) {
