@@ -43,13 +43,19 @@ void inverseKine(int x, int y, int z) {
   q2 = atan2(s2,c2);
 }
 
-void writeArm(int anghip, int angshoulder, int angelbow) {
-  Serial.println("Moving to:" + String(anghip) + ", " + String(angshoulder) + ", "+ String(angelbow) + ".");
+void writeArm(int uhip, int ushoulder, int uelbow) {
+  Serial.println("Moving to:" + String(uhip) + ", " + String(ushoulder) + ", "+ String(uelbow) + ".");
 
   // writing the angles (given in degrees) to the servos
-  hip.write(anghip);
-  shoulder.write(angshoulder);
-  elbow.write(angelbow);
+  hip.write(uhip);
+  shoulder.write(ushoulder);
+  elbow.write(uelbow);
+}
+
+
+int radToMicros(double rad) {
+  // computing the correct impulse to send to our servos for a given angle in radians
+  return round(rad * (MG996_MAX - MG996_MIN) / PI + MG996_MIN);
 }
 
 void moveArm(int x, int y, int z) {
@@ -57,16 +63,16 @@ void moveArm(int x, int y, int z) {
   
   Serial.println("Computed angles:" + String(q1) + ", " + String(q2) + ", "+ String(q3) + ".");
   
-  writeArm(q1*RAD_TO_DEG, q2*RAD_TO_DEG, q3*RAD_TO_DEG); // convert the angles from radians to degrees and moves the arm
+  writeArm(radToMicros(q1), radToMicros(q2), radToMicros(q3)); // convert the angles from radians to microseconds and moves the arm
 }
 
 void setup() {
   Serial.begin(9600);
 
-  // initializing the servos setting the correct minimum and maximum impulses
-  hip.attach(PINHIP, MG996_MIN, MG996_MAX);
-  shoulder.attach(PINSHO, MG996_MIN, MG996_MAX);
-  elbow.attach(PINELB, MG996_MIN, MG996_MAX);
+  // initializing the servos
+  hip.attach(PINHIP);
+  shoulder.attach(PINSHO);
+  elbow.attach(PINELB);
 }
 
 void loop() {
