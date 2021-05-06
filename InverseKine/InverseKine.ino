@@ -46,10 +46,10 @@ void inverseKine(int x, int y, int z) {
 void writeArm(int uhip, int ushoulder, int uelbow) {
   Serial.println("Moving to:" + String(uhip) + ", " + String(ushoulder) + ", "+ String(uelbow) + ".");
 
-  // writing the angles (given in degrees) to the servos
-  hip.write(uhip);
-  shoulder.write(ushoulder);
-  elbow.write(uelbow);
+  // writing the angles (given in microseconds) to the servos
+  hip.writeMicroseconds(uhip);
+  shoulder.writeMicroseconds(ushoulder);
+  elbow.writeMicroseconds(uelbow);
 }
 
 
