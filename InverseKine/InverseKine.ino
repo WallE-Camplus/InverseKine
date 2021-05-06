@@ -31,7 +31,7 @@ void inverseKine(int x, int y, int z) {
 
   // magic but maybe a little bit broken math stuff
   c1 = dx / sqrt(dx*dx + dy*dy);
-  s1 = dy / sqrt(dx*dx + dy*dy);
+  s1 = sqrt(1.0-c1*c1);
   q1 = atan2(dy,dx);
 
   c3 = (dx*dx+dy*dy+(dz-d1)*(dz-d1)-l2*l2-l3*l3)/(2.0*l2*l3);
