@@ -17,7 +17,7 @@ void Arm::radToMicros(double rad){
 }
 
 void Arm::move(int x, int y, int z){
-  InvKin ik (x,y,z);
+  ik.compute(x,y,z);
   hip.writeMicroseconds(radToMicros(ik.getQ1()));
   shoulder.writeMicroseconds(radToMicros(ik.getQ2()));
   elbow.writeMicroseconds(radToMicros(ik.getQ3()));
