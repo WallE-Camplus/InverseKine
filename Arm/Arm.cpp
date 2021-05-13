@@ -12,7 +12,7 @@ void Arm::begin(){
   elbow.attach(pinElbow);
 }
 
-void Arm:radToMicros(double rad){
+void Arm::radToMicros(double rad){
   return round(rad * (MG996_MAX - MG996_MIN) / PI + MG996_MIN);
 }
 
@@ -23,7 +23,7 @@ void Arm::move(int x, int y, int z){
   elbow.writeMicroseconds(radToMicros(ik.getQ3()));
 }
 
-void Arm:writeArm(double m1, double m2,double m3){
+void Arm::writeArm(double m1, double m2,double m3){
   // writing the angles (given in microseconds) to the servos
   hip.writeMicroseconds(uhip);
   shoulder.writeMicroseconds(ushoulder);

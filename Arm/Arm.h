@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include <math.h>
+#include "InverseKinematic.h"
 /**
  * @file
  * @version 1.0
