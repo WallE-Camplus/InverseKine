@@ -2,20 +2,17 @@
 
 /**
  * Constructor for the InverseKinematic objeect
- * 
- * 
-  */
-
-InvKin::InvKin(double d1,double l2, double l3){
-  this->dl = dl;
+ */
+InvKin::InvKin(double d1, double l2, double l3) {
+  this->d1 = d1;
   this->l2 = l2;
   this->l3 = l3;
 }
 
 /**
  * compute() 
-*/
-void InvKin::compute(int x. int y, int z){
+ */
+void InvKin::compute(int x, int y, int z) {
   double s1, s2, s3;
   double c1, c2, c3;
   double dx, dy, dz; // variable to store the target
